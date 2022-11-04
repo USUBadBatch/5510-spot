@@ -9,3 +9,4 @@ sklearn
 matplotlib
 opencv-python
 opencv-contrib-python
+mediapipe
