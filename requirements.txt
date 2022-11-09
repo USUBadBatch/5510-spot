@@ -13,3 +13,11 @@ matplotlib
 opencv-python
 opencv-contrib-python
 mediapipe
+
+
+bosdyn-api                 
+bosdyn-choreography-client 
+bosdyn-choreography-protos 
+bosdyn-client              
+bosdyn-core                
+bosdyn-mission             
