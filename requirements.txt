@@ -13,6 +13,7 @@ matplotlib
 opencv-python
 opencv-contrib-python
 mediapipe
+termcolor
 
 
 bosdyn-api                 

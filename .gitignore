@@ -2,3 +2,4 @@ venv/
 *.out
 *.exe
 bin/
+auth.json
