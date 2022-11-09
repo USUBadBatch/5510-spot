@@ -3,6 +3,9 @@ torch
 torchvision 
 torchaudio 
 
+
+tensorflow
+tensorboard
 numpy
 scipy
 sklearn
