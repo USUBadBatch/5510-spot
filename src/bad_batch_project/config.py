@@ -1,15 +1,15 @@
 from utils import spot
-spot.init()
+
 
 config = {
-	"okay": [spot.stand, {}],
-	"peace": [spot.lay, {}],
-	"thumbs up": [spot.sit, {"param2" : 555}],
-	"thumbs down": [None, {}],
-	"call me": [None, {}],
-	"stop": [None, {}],
-	"rock": [None, {}],
-	"live long": [spot.twerk, {"interval":.5, "duration":8}],
-	"fist": [spot.twerk, {"duration": 15}],
-	"smile": [None, {}],
+	"okay"        : [spot.stand, {}],
+	"peace"       : [spot.sit, {}],
+	"thumbs up"   : [spot.lay, {}],
+	"thumbs down" : [spot.twerk, {}],
+	"call me"     : [None, {}],
+	"stop"        : [None, {}],
+	"rock"        : [spot.turnOn, {}],
+	"live long"   : [spot.twerk, {"interval" : .2, "duration":5}],
+	"fist"        : [spot.turnOff, {}],
+	"smile"       : [None, {}],
 }

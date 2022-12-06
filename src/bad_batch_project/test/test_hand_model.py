@@ -17,6 +17,7 @@ model = tf.keras.models.load_model(f'{os.getcwd()}/hand-gesture-recognition-code
 f = open(f'{os.getcwd()}/hand-gesture-recognition-code-tensorflow/gesture.names', 'r')
 classNames = f.read().split('\n')
 f.close()
+            # data += f"\t{ '\'' + name + '\'':15<}: [None, {{}}],\n"
 print(classNames)
 
 
