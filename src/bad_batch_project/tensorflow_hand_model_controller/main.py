@@ -2,6 +2,17 @@ import os
 from termcolor import colored
 import time
 import warnings
+import sys
+
+
+RECORDING_WIDTH = 1920
+RECORDING_HEIGHT = 1080
+RECORDING_FPS = 2.6
+RECORDING_CHANNEL = 3
+
+KEY_ESC = 27
+    
+DEBUG = sys.argv[1] == "--record" 
 
 warnings.simplefilter(action="ignore", category=UserWarning)
 warnings.simplefilter(action="ignore", category=RuntimeWarning)
@@ -34,6 +45,17 @@ import mediapipe as mp
 import tensorflow as tf
 
 from utils import spot
+
+if DEBUG:
+    i = 0
+    local_files = os.listdir(os.getcwd())
+    while True:
+        if not f"recording{i}.mp4" in local_files:
+            break
+        i += 1
+
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    video = cv2.VideoWriter(f'recording{i}.mp4', fourcc, float(RECORDING_FPS), (RECORDING_WIDTH, RECORDING_HEIGHT))
 
 mpHands = mp.solutions.hands
 hands = mpHands.Hands(max_num_hands=1, min_detection_confidence=0.7)
@@ -90,8 +112,10 @@ while True:
 
                 landmarks.append([lmx, lmy])
 
+            if DEBUG:
             # Drawing landmarks on frames
-            # mpDraw.draw_landmarks(frame, handslms, mpHands.HAND_CONNECTIONS)
+                mpDraw.draw_landmarks(frame, handslms, mpHands.HAND_CONNECTIONS)
+                video.write(cv2.resize(frame, (RECORDING_WIDTH, RECORDING_HEIGHT)))
 
             # Predict gesture
             prediction = model([landmarks])
@@ -116,7 +140,10 @@ while True:
                     if (config[hand_shape][0] is not None):
                         predictions = {}
                         kwargs = config[hand_shape][1]
-                        config[hand_shape][0](**kwargs)
+                        try:
+                            config[hand_shape][0](**kwargs)
+                        except Exception as e:
+                            print(e)
 
 
     # show the prediction on the frame
@@ -126,10 +153,10 @@ while True:
     # Show the final output
     # cv2.imshow("Output", frame) 
 
-    if cv2.waitKey(1) == ord('q'):
+    if cv2.waitKey(1) == KEY_ESC:
         break
 
 # release the webcam and destroy all active windows
+video.release()
 cap.release()
-
 cv2.destroyAllWindows()

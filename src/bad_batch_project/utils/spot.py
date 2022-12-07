@@ -1,4 +1,5 @@
 import bosdyn.client
+from bosdyn.client.robot_state import RobotStateClient
 from bosdyn.client.image import ImageClient
 from bosdyn.client.robot_command import RobotCommandClient, blocking_stand
 from PIL import Image
@@ -12,6 +13,11 @@ from termcolor import colored
 initialized = False
 command_client = None
 robot = None
+state_client = None
+
+class PowerException(Exception):
+    def __init__(self, *args: object) -> None:
+        super().__init__(*args)
 
 def check_init():
     global initialized
@@ -19,11 +25,16 @@ def check_init():
         print(colored("SPOT NOT INITIALIZD", "red"))
         exit()
 
+    if not bosdyn.client.power.is_powered_on(state_client):
+        print(colored("SPOT MOTORS NOT ON", "red"))
+        raise PowerException("spot motors not on")
+
 
 def init():
     global command_client
     global robot
     global initialized
+    global state_client
 
 
     sdk = bosdyn.client.create_standard_sdk('understanding-spot')
@@ -58,10 +69,16 @@ def init():
     initialized = True
 
 def turnOff():
+    check_init()
     robot.power_off(cut_immediately=False)
 
 def turnOn():
-    robot.power_on(timeout_sec=20)
+    try:
+        check_init()
+    except PowerException as e:
+        print(colored("TURNING ON MOTORS", "green"))
+    finally:
+        robot.power_on(timeout_sec=20)
 
 
 def stand():

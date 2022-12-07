@@ -3,3 +3,4 @@ venv/
 *.exe
 bin/
 auth.json
+*.mp4
