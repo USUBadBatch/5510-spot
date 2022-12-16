@@ -66,7 +66,7 @@ print(colored("[INFO] Mediapipe hands initialized", "green"))
 # Load the gesture recognizer model
 
 print(f"cwd: {os.getcwd()}")
-model = tf.keras.models.load_model(f'{os.getcwd()}/hand-gesture-recognition-code-tensorflow/mp_hand_gesture')
+model = tf.keras.models.load_model(f'{os.getcwd()}/src/hand-gesture-recognition-code-tensorflow/mp_hand_gesture')
 print(colored("[INFO] Hands detection model initialized", "green"))
 
 # Load class names
