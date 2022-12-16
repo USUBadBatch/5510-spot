@@ -2,7 +2,7 @@ from utils import spot
 from typing import Any, Callable
 
 
-config: dict[str, tuple[Callable[...], dict[str, Any]]] = {
+config = {
 	"okay"        : [spot.stand, {}],
 	"peace"       : [spot.sit, {}],
 	"thumbs up"   : [spot.lay, {}],
