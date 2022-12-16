@@ -39,4 +39,4 @@ All python files should be ran from the project root
 The Boston Dynamics spot sdk is included with this repo as a submodule. To inflate run `git submodule init` then `git submodule update`.
 
 ## References
-### 1. [First Reference](http://bingbingbong.ga)
+### 1. [First Reference](http://spotthedog.ml)
