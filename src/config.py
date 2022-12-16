@@ -1,7 +1,8 @@
 from utils import spot
+from typing import Any, Callable
 
 
-config = {
+config: dict[str, tuple[Callable[...], dict[str, Any]]] = {
 	"okay"        : [spot.stand, {}],
 	"peace"       : [spot.sit, {}],
 	"thumbs up"   : [spot.lay, {}],

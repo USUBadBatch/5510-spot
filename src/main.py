@@ -116,6 +116,8 @@ while True:
             # Drawing landmarks on frames
                 mpDraw.draw_landmarks(frame, handslms, mpHands.HAND_CONNECTIONS)
                 video.write(cv2.resize(frame, (RECORDING_WIDTH, RECORDING_HEIGHT)))
+                cv2.putText(frame, className, (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 
+                            1, (0,0,255), 2, cv2.LINE_AA)
 
             # Predict gesture
             prediction = model([landmarks])
@@ -147,8 +149,6 @@ while True:
 
 
     # show the prediction on the frame
-    # cv2.putText(frame, className, (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 
-                #    1, (0,0,255), 2, cv2.LINE_AA)
 
     # Show the final output
     # cv2.imshow("Output", frame) 
