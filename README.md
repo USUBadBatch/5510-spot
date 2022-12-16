@@ -37,3 +37,6 @@ All python files should be ran from the project root
         * This contains some utility files for authenticating the boston dynamics api with spot as well as the functions to make spot do certain actions
 ## Spot sdk
 The Boston Dynamics spot sdk is included with this repo as a submodule. To inflate run `git submodule init` then `git submodule update`.
+
+## References
+### 1. [First Reference](http://bingbingbong.ga)
