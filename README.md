@@ -5,9 +5,9 @@ This is our codebase for our 5510 Spot the Guide Dog final project. To use this 
 All python files should be ran from the project root
 ## Layout
 * `test/`
-    * In the `test/` directory, we have a bunch of single python test files. These werer used to validates certain features or functionality before trying to implement them into the spot controller logic so we could verify we had a working version before hand.
+    * In the `test/` directory, we have a bunch of single python test files. These were used to validate certain features or functionality before trying to implement them into the spot controller logic so we could verify we had a working version beforehand.
 * `src/`
-    * This is the directory for spots main controller logic. In it are 1-2 files. `main.py` and `config.py`. If there is no `config.py` then running the main file will create a templated one for you. `config.py` contains a dict of the hand gestures names that the model can recognize as the keys, where the values contains callbacks to be executed when a classname is classified by the model. The value exact type is an array, where the first element is the callback, and the second element is another dict. The keys are of the second dict are parameter names to the callback functions and the values are the values to set those parameters to.
+    * This is the directory for spots main controller logic. In it are 1-2 files. `main.py` and `config.py`. If there is no `config.py` then running the main file will create a templated one for you. `config.py` contains a dict of the hand gestures names that the model can recognize as the keys, where the values contains callbacks to be executed when a classname is classified by the model. The value's exact type is an array, where the first element is the callback, and the second element is another dict. The keys are of the second dict are parameter names to the callback functions and the values are the values to set those parameters to.
     * EX: You have a function
         ```py
         def doPrintSomething(msg = "Default message"):
