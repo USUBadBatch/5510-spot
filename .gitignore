@@ -4,3 +4,4 @@ venv/
 bin/
 auth.json
 *.mp4
+recordings/

@@ -77,6 +77,8 @@ def turnOn():
         check_init()
     except PowerException as e:
         print(colored("TURNING ON MOTORS", "green"))
+    except Exception as e:
+        print(e)
     finally:
         robot.power_on(timeout_sec=20)
 

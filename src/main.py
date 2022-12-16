@@ -11,8 +11,8 @@ RECORDING_FPS = 2.6
 RECORDING_CHANNEL = 3
 
 KEY_ESC = 27
-    
-DEBUG = sys.argv[1] == "--record" 
+
+DEBUG = sys.argv[1] == "--record" if len(sys.argv) > 1 else None
 
 warnings.simplefilter(action="ignore", category=UserWarning)
 warnings.simplefilter(action="ignore", category=RuntimeWarning)
@@ -24,10 +24,10 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # or any {'0', '1', '2'}
 #   2     | WARNING          | Filter out INFO & WARNING messages 
 #   3     | ERROR            | Filter out all messages      
 
-f = open(f'{os.getcwd()}/hand-gesture-recognition-code-tensorflow/gesture.names', 'r')
+f = open(f'{os.getcwd()}/src/hand-gesture-recognition-code-tensorflow/gesture.names', 'r')
 classNames = f.read().split('\n')
-if not "config.py" in os.listdir(os.getcwd()):
-    with open("config.py", mode="w+") as config:
+if not "config.py" in os.listdir(os.getcwd() + "/src"):
+    with open("src/config.py", mode="w+") as config:
         data = "config = {\n"
         for name in classNames:
             data += format("\t\"" + name + "\"","15s") + ": [None, {}],\n"
